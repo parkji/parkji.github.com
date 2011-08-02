@@ -3,3 +3,6 @@ layout: default
 title: Parkji.github.com
 ---
 <h1>Parkji.github.com - A work in progress!</h1>
+{% for post in site.posts %}
+    {{ post.content | truncatewords: 25 }}
+{% endfor %}

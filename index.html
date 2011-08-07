@@ -2,7 +2,11 @@
 layout: default
 title: Parkji.github.com
 ---
-<h1>Parkji.github.com - A work in progress!</h1>
+
 {% for post in site.posts %}
-    {{ post.content | truncatewords: 25 }}
+<section class="post separated-bottom">
+    <h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+    {{ post.content | truncatewords: 100 }}
+    <p><a href="{{ post.url }}" title="{{ post.title }}">Read Post &rarr;</a></p>
+</section>
 {% endfor %}

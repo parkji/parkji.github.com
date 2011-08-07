@@ -109,12 +109,17 @@ a {
 	   -moz-transition: all 0.2s ease-in;
 }
 p {
+	line-height: 23px;
 	margin-bottom: 10px;
 	text-shadow: 1px 1px 0 #DDDDDD;
 }
 ul {
 	list-style: disc;
 	margin: 0 0 10px 30px;
+}
+img {
+	border: 1px solid #CCCCCC;
+	padding: 3px;
 }
 /** Structure styles **/
 #wrapper {

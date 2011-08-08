@@ -96,6 +96,9 @@ h2 a:hover,
 header a:hover {
 	color: #ce9a63;
 }
+h1 {
+	margin-bottom: 20px;
+}
 h2 {
 	border: 0;
 	font-size: 22px;
@@ -119,7 +122,15 @@ ul {
 }
 img {
 	border: 1px solid #CCCCCC;
+	margin: 5px; 
 	padding: 3px;
+	vertical-align: middle;
+}
+strong {
+	font-weight: bold;
+}
+em {
+	font-style: italic;
 }
 /** Structure styles **/
 #wrapper {

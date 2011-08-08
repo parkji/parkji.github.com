@@ -7,6 +7,10 @@ pre {
     font-size: 14px;
 	margin: 10px 0;
 }
+code {
+	color: #222222;
+	font-family: monospace;
+}
 .hll { background-color: #ffffcc }
  { background: #000000; }
 .c { color: #B729D9; font-style: italic } /* Comment */

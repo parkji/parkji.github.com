@@ -18,10 +18,7 @@ Demos:
 * Short border - <http://jsfiddle.net/parkji/xm5Wp/9/>
 * Arrow - 
 
-## Short Bottom Border ##
-
-The first of these images (what I like to call the 'short bottom border') is the easiest to code using **:after**, which is easy to understand when you consider that is actually *just* a border.
-
+## Base heading styling ##
 The first step is to create the base styling for the heading:
 
 {% highlight css %}
@@ -33,9 +30,15 @@ h1 {
 }
 {% endhighlight %}
 
-The key properties in the above rule are `padding-bottom` &amp; `position`. The `padding-bottom` will provide some spacing between the heading text &amp; the border, &amp; the `position` will ensure that the **:after** rule is constrained to the boundaries of the heading.
+The `position:relative` is necessary because the **:after** styles will use `position:absolute` &amp; so will be constrained by the boundaries of the heading.
 
-Now we need to add the border using **:after**. The following rule will achieve the effect we want:
+Now we can start adding our extra styling.
+
+## Short Bottom Border ##
+
+The first of these images (what I like to call the 'short bottom border') is the easiest to code using **:after**, which is easy to understand when you consider that is actually *just* a border.
+
+Here's the CSS:
 
 {% highlight css %}
 h1:after {
@@ -53,3 +56,16 @@ This adds a border after the heading of width `40px`, i.e. a short border. Of co
 Check out the demo here: <http://jsfiddle.net/parkji/xm5Wp/9/>
 
 ## Arrow ##
+
+To create the arrow styling of the second image, we'll use borders, as described in [this tutorial](http://www.howtocreate.co.uk/tutorials/css/slopes).
+
+Here's the CSS:
+
+{% highlight css %}
+h1:after {
+    bottom: 0;
+    content: " ";
+    left: 0;
+    position: absolute;
+}
+{% endhighlight %}

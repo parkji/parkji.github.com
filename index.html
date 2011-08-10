@@ -5,8 +5,7 @@ title: Parkji.github.com
 
 {% for post in site.posts %}
 <section class="post separated-bottom">
-    <h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
-    {{ post.content | truncatewords: 100 }}
-    <p><a href="{{ post.url }}" title="{{ post.title }}">Read Post &rarr;</a></p>
+    <p>{{ post.date | date_to_long_string }}</p>
+    <h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}&nbsp;&rarr;</a></h2>
 </section>
 {% endfor %}

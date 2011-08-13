@@ -91,11 +91,6 @@ header a {
 	font-weight: bold;
 	letter-spacing: 1px;
 }
-h1 a:hover,
-h2 a:hover,
-header a:hover {
-	color: #ce9a63;
-}
 h1 {
 	margin-bottom: 20px;
 }
@@ -103,13 +98,17 @@ h2 {
 	border: 0;
 	font-size: 22px;
 	padding: 0;
-	margin-bottom: 10px;
+	margin: 10px 0;
 }
 a {
+	font-weight: bold;
 	color: #31659c;
 	text-decoration: none;
 	-webkit-transition: all 0.2s ease-in;
 	   -moz-transition: all 0.2s ease-in;
+}
+a:hover {
+	color: #ce9a63;
 }
 p {
 	line-height: 23px;
@@ -119,6 +118,9 @@ p {
 ul {
 	list-style: disc;
 	margin: 0 0 10px 30px;
+}
+li {
+	margin-bottom: 8px;
 }
 img {
 	border: 1px solid #CCCCCC;

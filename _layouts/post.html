@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <title>{{ page.title }}</title>
-        <link rel="stylesheet" href="/css/main.css" type="text/css" media="screen" charset="utf-8" />
-        <link rel="stylesheet" href="/css/syntax.css" type="text/css" media="screen" charset="utf-8" />
-    </head>
-    <body>
-        <div id="wrapper">
-            <header class="separated-bottom">
-                <a href="/" title="blog.parkji.co.uk - Web Design &amp; Development musings">
-                    blog.parkji.co.uk - Web Design &amp; Development musings
-                </a>
-            </header>
+{% include header.html %}
             <section id="content">
                 {{ content }}
                 <div id="disqus_thread"></div>
@@ -34,9 +20,4 @@
                 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                 <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
             </section>
-            <aside>
-                
-            </aside>
-        </div>
-    </body>
-</html>
+{% include footer.html %}    

@@ -71,7 +71,7 @@ h1:after {
 }
 {% endhighlight %}
 
-In this case the **:after** adds a empty element that has borders 10px in width, however, since the left, right &amp; bottom borders have a colour of transparent, they do not appear. This means that not only do you get the effect of an arrow, *but* you can also place the other items immediately after the heading &amp; the borders will not obfuscate them.
+In this case the **:after** adds a empty element that has borders 10px in width, however, since the left, right &amp; bottom borders are transparent in colour, they do not appear. This means that not only do you get the effect of an arrow, *but* you can also place the other items immediately after the heading &amp; the borders will not obfuscate them.
 
 Check out the demo here: <http://jsfiddle.net/parkji/Ujk9q/>
 

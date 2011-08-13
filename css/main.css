@@ -124,7 +124,7 @@ li {
 }
 img {
 	border: 1px solid #CCCCCC;
-	margin: 5px; 
+	margin: 10px 10px 10px 0; 
 	padding: 3px;
 	vertical-align: middle;
 }
@@ -134,20 +134,27 @@ strong {
 em {
 	font-style: italic;
 }
+footer {
+	font-size: 10px;
+	margin: 10px auto;
+	width: 720px;
+}
 /** Structure styles **/
 #wrapper {
 	background: #F5F5F5;
 	border: 1px solid #ccc;
 	margin: auto;
+	overflow: hidden;
 	padding: 20px 40px;
 	width: 720px;
-	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .1);
-	   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, .1);
-	        box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+	   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+	        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
 }
 #content {
 	border-right: 1px solid #CCCCCC;
 	color: #555555;
+	float: left;
 	font-size: 14px;
 	padding-right: 40px;
 	position: relative;
@@ -161,6 +168,14 @@ em {
 	right: -3px;
 	top: 0;
 	width: 1px;
+}
+
+#sidebar {
+	color: #555555;
+	float: left;
+	font-size: 14px;
+	padding-left: 40px;
+	width: 179px;
 }
 
 /** Classes **/
@@ -191,4 +206,49 @@ em {
 }
 .category:hover {
 	background-color: #ce9a63;
+}
+.inline {
+	float: left;
+	margin-right: 10px;
+}
+.social-link {
+	background: transparent url(/images/social-icons.png) no-repeat scroll left top;
+	display: block;
+	height: 32px;
+	margin-bottom: 5px;
+	position: relative;
+	width: 32px;
+}
+.social-link:hover:before {
+	border-color: transparent rgba(0, 0, 0, 0.5) transparent transparent;
+	border-style: solid;
+	border-width: 7px;
+	content: ' ';
+	left: 36px;
+	position: absolute;
+	top: 9px;
+}
+.social-link:hover:after {
+	background-color: rgba(0, 0, 0, 0.5);
+	content: attr(title);
+	color: #FFFFFF;
+	font-size: 12px;
+	left: 50px;
+	padding: 0 5px;
+	position: absolute;
+	top: 4px;
+	text-shadow: none;
+	white-space: nowrap;
+}
+#forrst-link {
+	background-position: left -64px;
+}
+#github-link {
+	background-position: left -32px;
+}
+#linkedin-link {
+	background-position: left -96px;
+}
+#facebook-link {
+	background-position: left -128px;
 }

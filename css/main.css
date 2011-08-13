@@ -73,6 +73,7 @@ table {
 body {
 	background: transparent url(/images/noise.png) repeat;
 	font: normal normal normal 100% Arial, sans-serif;
+	overflow-y: scroll;
 	padding: 20px 0;
 }
 header {

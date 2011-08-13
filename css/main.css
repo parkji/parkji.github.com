@@ -222,18 +222,18 @@ footer {
 .social-link:hover:before {
 	border-color: transparent rgba(0, 0, 0, 0.5) transparent transparent;
 	border-style: solid;
-	border-width: 7px;
+	border-width: 5px;
 	content: ' ';
 	left: 36px;
 	position: absolute;
-	top: 9px;
+	top: 11px;
 }
 .social-link:hover:after {
 	background-color: rgba(0, 0, 0, 0.5);
 	content: attr(title);
 	color: #FFFFFF;
 	font-size: 12px;
-	left: 50px;
+	left: 46px;
 	padding: 0 5px;
 	position: absolute;
 	top: 4px;

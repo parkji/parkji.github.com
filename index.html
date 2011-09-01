@@ -7,5 +7,6 @@ title: Home
 <section class="post separated-bottom">
     <p>{{ post.date | date_to_long_string }}</p>
     <h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}&nbsp;&rarr;</a></h2>
+    <p>{{ post.abstract }}</p>
 </section>
 {% endfor %}

@@ -2,6 +2,7 @@
 layout: post
 title: Enhancing Heading Styles Using the CSS Pseudo Element :after
 tags: [CSS, Front End]
+abstract: A couple of examples of how the :after CSS pseudo element can be used to enhance the styling of headings
 ---
 
 # {{ page.title }} #

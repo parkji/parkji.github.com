@@ -1,11 +1,14 @@
 pre {
     padding:10px;
     margin: 5px 0px;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #444444;
+    color: #000;
     font-family: monospace;
     font-size: 14px;
 	margin: 10px 0;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	   -moz-border-radius: 10px;
 }
 code {
 	color: #222222;

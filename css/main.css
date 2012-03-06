@@ -119,6 +119,7 @@ p {
 ul {
 	list-style: disc;
 	margin: 0 0 10px 30px;
+	line-height: 23px;
 }
 li {
 	margin-bottom: 8px;

@@ -9,10 +9,14 @@ pre {
 	border-radius: 10px;
 	-webkit-border-radius: 10px;
 	   -moz-border-radius: 10px;
+	overflow: auto;
 }
 code {
 	color: #222222;
 	font-family: monospace;
+}
+code.html {
+	color: #FF9988;
 }
 .hll { background-color: #ffffcc }
  { background: #000000; }

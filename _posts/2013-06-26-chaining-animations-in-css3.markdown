@@ -92,22 +92,19 @@ The trick here is to keep the animations from running at the same time. In this 
 
 * 0 seconds
 * 2 seconds
-* 4 seconds
-* ...
+* 4 seconds ...
 
 the second at:
 
-* 0.5 seconds
-* 2.5 seconds
-* 4.5 seconds
-* ...
+* 0\.5 seconds
+* 2\.5 seconds
+* 4\.5 seconds ...
 
 and the third at:
 
 * 1 seconds
 * 3 seconds
-* 5 seconds
-* ...
+* 5 seconds ...
 
 This means that the never begin animating at the same time & will therefore appear chained together.
 

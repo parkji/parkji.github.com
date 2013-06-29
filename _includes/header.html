@@ -1,14 +1,24 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{{ page.title }} - ParkJi Blog</title>
-        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
-        <link rel="stylesheet" href="/css/main.css" type="text/css">
-        <!--[if lt IE 9]>
-        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->        
+        <link href='http://fonts.googleapis.com/css?family=Fenix' rel='stylesheet' type='text/css'>
+
+        {% if site.env != 'development' %}
+            <link rel="stylesheet" href="http://assets.parkji.co.uk/css/styles.min.css">
+        {% else %}
+            <link rel="stylesheet" href="http://parkjiAssets.localhost/css/styles.min.css">
+        {% endif %}
+        {% if site.env != 'development' %}
+            <!--[if lt IE 9]>
+                <script src="http://assets.parkji.co.uk/js/polyfills.js"></script>
+            <![endif]-->
+        {% else %}
+            <!--[if lt IE 9]>
+                <script src="http://parkjiAssets.localhost/js/polyfills.js"></script>
+            <![endif]-->
+        {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="text/javascript">
 
           var _gaq = _gaq || [];

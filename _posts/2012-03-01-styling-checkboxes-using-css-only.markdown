@@ -66,7 +66,7 @@ The selector here is saying "Apply these styles to any `.cb-label:before` elemen
 
 That's all there is to it, however there are a couple of caveats...
 
-# Caveats #
+## Caveats ##
 
 * Browser support - this will not work in Internet Explorer versions 8 and below because these versions do not support the `:checked` pseudo class.
 * Each label and input must be contained because of the use of the sibling selector. If each label and input are not wrapped in a containing element, each `label:before` pseudo element will be changed upon checking/unchecking of any checkbox.

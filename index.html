@@ -4,9 +4,13 @@ title: Home
 ---
 
 {% for post in site.posts %}
-<section class="post separated-bottom">
-    <p>{{ post.date | date_to_long_string }}</p>
-    <h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}&nbsp;&rarr;</a></h2>
-    <p>{{ post.abstract }}</p>
-</section>
+    <article class="spaced {% if forloop.last != true %}separated{% endif %}">
+        <p>{{ post.date | date_to_long_string }}</p>
+        <header>
+            <h2>
+                <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+            </h2>
+        </header>
+        <p>{{ post.abstract }}</p>
+    </article>
 {% endfor %}

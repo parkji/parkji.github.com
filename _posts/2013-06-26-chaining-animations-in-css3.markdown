@@ -37,7 +37,7 @@ and the basic CSS to go with it:
 
 This produces:
 
-![Intials Dots](/images/posts/chaining-css3-animations/initial-dots.png)
+![Intials Dots](/images/posts/chaining-css3-animations/initial-dots.png){: .standout}
 
 The next thing we need to do is create the animation that will highlight the dots:
 
@@ -71,7 +71,7 @@ Now we'll get the dots to use this animation:
 
 This runs the `flash` animation on the dot element continuously (`infinite`) at a speed of 2 seconds. This produces the following:
 
-![Animated dots, all flashing](/images/posts/chaining-css3-animations/dots-all-flashing.png)
+![Animated dots, all flashing](/images/posts/chaining-css3-animations/dots-all-flashing.png){: .standout}
 
 This isn't quite what we want because each dot is flashing at the same time. Enter `animation-delay`.
 
@@ -86,7 +86,7 @@ This isn't quite what we want because each dot is flashing at the same time. Ent
 
 `animation-delay` stops the animation from running until the set time after the element is loaded. In our example the second dot will flash after 500ms & the third after 1000ms, this keeps the dots out of sequence & produces the effect we want:
 
-![Dots flashing in sequence](/images/posts/chaining-css3-animations/dots-flashing.png)
+![Dots flashing in sequence](/images/posts/chaining-css3-animations/dots-flashing.png){: .standout}
 
 The trick here is to keep the animations from running at the same time. In this example the first dot will begin animating at:
 

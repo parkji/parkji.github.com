@@ -9,7 +9,7 @@ abstract: A review of Remo Laubacher's book "concrete5 Beginner's Guide - Second
 
 A few weeks ago I was approached by [Packt Publishing](http://www.packtpub.com/) to review [Remo Laubacher's](http://www.codeblog.ch/) book *concrete5 Beginner's Guide - Second Edition*. Having been an extensive user of concrete5 in the past I was more than happy to oblige, so here's my take on it...
 
-![concrete5 Beginners Guide Cover](/images/posts/concrete5-beginners-guide-review/cover.jpg)
+![concrete5 Beginners Guide Cover](/images/posts/concrete5-beginners-guide-review/cover.jpg){: .standout}
 
 ## Getting to know concrete5 ##
 

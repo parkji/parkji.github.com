@@ -13,27 +13,25 @@ I was recently playing around creating a loading animation which lead to me figu
 
 First up here's the HTML I'll be using:
 
-{% highlight html %}
-<span class="dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-{% endhighlight %}
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+{: .language-markup}
 
 and the basic CSS to go with it:
 
-{% highlight css %}
-.dot {
-    display: inline-block;
-    background: #CCC;
-    height: 8px;
-    width: 8px;
-    border-radius: 12px;
-    margin-right: 5px;
-}
-.dot:first-child {
-    background: black;
-}
-{% endhighlight %}
+    .dot {
+        display: inline-block;
+        background: #CCC;
+        height: 8px;
+        width: 8px;
+        border-radius: 12px;
+        margin-right: 5px;
+    }
+    .dot:first-child {
+        background: black;
+    }
+{: .language-css}
 
 This produces:
 
@@ -41,33 +39,31 @@ This produces:
 
 The next thing we need to do is create the animation that will highlight the dots:
 
-{% highlight css %}
-@keyframes flash {
-    from  {
-        background: black;
+    @keyframes flash {
+        from  {
+            background: black;
+        }
+        to {
+            background: #CCC;
+        }
     }
-    to {
-        background: #CCC;
-    }
-}
-{% endhighlight %}
+{: .language-css}
 
 This is pretty basic & simply flashes the dot from black to grey.
 
 Now we'll get the dots to use this animation:
 
-{% highlight css %}
-.dot {
-    ...
+    .dot {
+        ...
 
-    animation-name: flash;
-    animation-duration: 2000ms;
-    animation-iteration-count: infinite;
+        animation-name: flash;
+        animation-duration: 2000ms;
+        animation-iteration-count: infinite;
 
-    /** or in short hand **/
-    animation: flash 2000ms infinite;
-}
-{% endhighlight %}
+        /** or in short hand **/
+        animation: flash 2000ms infinite;
+    }
+{: .language-css}
 
 This runs the `flash` animation on the dot element continuously (`infinite`) at a speed of 2 seconds. This produces the following:
 
@@ -75,14 +71,13 @@ This runs the `flash` animation on the dot element continuously (`infinite`) at 
 
 This isn't quite what we want because each dot is flashing at the same time. Enter `animation-delay`.
 
-{% highlight css %}
-.dot:nth-child(2) {
-    animation-delay: 500ms;
-}
-.dot:nth-child(3) {
-    animation-delay: 1000ms;
-}
-{% endhighlight %}
+    .dot:nth-child(2) {
+        animation-delay: 500ms;
+    }
+    .dot:nth-child(3) {
+        animation-delay: 1000ms;
+    }
+{: .language-css}
 
 `animation-delay` stops the animation from running until the set time after the element is loaded. In our example the second dot will flash after 500ms & the third after 1000ms, this keeps the dots out of sequence & produces the effect we want:
 
@@ -112,35 +107,32 @@ To see this fully in action [see this pen](http://codepen.io/parkji/full/aesih).
 
 Since animations are also supported on pseudo-elements it's also possible to shrink the markup for this by using `:after` & `:before`, like so:
 
-{% highlight html %}
-<div class="dots"></div>
-{% endhighlight %}
+    <div class="dots"></div>
+{: .language-markup}
 
-{% highlight css %}
-.dots {
-    display: inline-block;
-    background: black;
-    height: 8px;
-    width: 8px;
-    border-radius: 12px;
-    position: relative;
-    animation: flash 2000ms infinite;
-}
-.dots:before, .dots:after {
-    content: '';
-    position: absolute;
-    left: 16px;
-    background: #CCC;
-    height: 8px;
-    width: 8px;
-    border-radius: 12px;
-    animation: flash 2000ms 500ms infinite; /* 500ms is the delay */
-}
-.dots:after {
-    left: 32px;
-    animation-delay: 1000ms;
-}
-{% endhighlight %}
+    .dots {
+        display: inline-block;
+        background: black;
+        height: 8px;
+        width: 8px;
+        border-radius: 12px;
+        position: relative;
+        animation: flash 2000ms infinite;
+    }
+    .dots:before, .dots:after {
+        content: '';
+        position: absolute;
+        left: 16px;
+        background: #CCC;
+        height: 8px;
+        width: 8px;
+        border-radius: 12px;
+        animation: flash 2000ms 500ms infinite; /* 500ms is the delay */
+    }
+    .dots:after {
+        left: 32px;
+        animation-delay: 1000ms;
+    }
+{: .language-css}
 
 Finally, because mutiple animations can be used on an element you can go a bit crazier with something [like this](http://cdpn.io/lspuk).
-

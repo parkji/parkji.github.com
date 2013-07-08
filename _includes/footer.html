@@ -13,5 +13,10 @@
                 Powered by <a href="http://pages.github.com" title="Github Pages">github:pages</a> &amp; <a href="https://github.com/mojombo/jekyll/wiki" title="Jekyll">Jekyll</a>
             </p>
         </footer>
+        {% if site.env != 'development' %}
+            <script src="http://assets.parkji.co.uk/js/prism.min.js"></script>
+        {% else %}
+            <script src="http://parkjiAssets.localhost/js/prism.min.js"></script>
+        {% endif %}
     </body>
 </html>

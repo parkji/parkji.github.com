@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-{% for post in site.posts %}
+{% for post in paginator.posts %}
     <article class="spaced {% if forloop.last != true %}separated{% endif %}">
         <p>{{ post.date | date_to_long_string }}</p>
         <header>
@@ -14,3 +14,25 @@ title: Home
         <p>{{ post.abstract }}</p>
     </article>
 {% endfor %}
+{% if paginator.total_pages > 1 %}
+    <ol class="nav pagination spaced">
+        <li class="pagination__prev">
+            {% if paginator.previous_page %}
+            {% if paginator.previous_page == 1 %}
+                <a href="/">&laquo; Previous</a>
+            {% else %}
+                <a href="/page{{paginator.previous_page}}">&laquo; Previous</a>
+            {% endif %}
+            {% else %}
+                Previous
+            {% endif %}
+        </li>
+        <li class="pagination__next">
+            {% if paginator.next_page %}
+                <a href="/page{{paginator.next_page}}">Next &raquo;</a>
+            {% else %}
+                Next
+            {% endif %}
+        </li>
+    </ol>
+{% endif %}

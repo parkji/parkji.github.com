@@ -1,0 +1,11 @@
+{
+  "name": "parkji.github.com",
+  "version": "0.1.0",
+  "description": "ParkJi Blog Website",
+  "author": "Ben Parker",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.1",
+    "grunt-shell": "~0.3.1"
+  }
+}

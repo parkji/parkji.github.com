@@ -24,7 +24,8 @@ module.exports = function(grunt) {
             tasks: ['shell:jekyllBuild', 'shell:jekyllServe'],
             options: {
                 interrupt: true,
-                atBegin: true
+                atBegin: true,
+                livereload: true
             }
         }
     });

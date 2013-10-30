@@ -236,3 +236,58 @@ Now when we drop our `.item` element in the `.bin` element we'll get an alert "I
 You can see the full code for this post in this [pen](http://cdpn.io/eJGaz).
 
 It's also worth noting that by passing in the function to be called on drop you can have different functions for each different droppable area, here's a [pen](http://cdpn.io/IDibn) with an example.
+
+## UPDATE: 29/10/2013&mdash;ng-repeat
+
+This post has proven a lot more popular than I thought it would & a lot of the comments have quite rightly pointed out that this solution doesn't play well with ng-repeat due to scope issues. This update is my solution to solving this & also to allow the IDs of both the item & the bin to be passed to the controller function on drop.
+
+### HTML amends
+
+The changes to the HTML are:
+
+* addition of attributes to match the ng-repeat variable - this will mean the ng-repeat item will still be in scope on each iteration
+* dynamic ID generation
+* removing the brackets on the drop attribute - this allows us to pass parameters to it later on
+* the ng-repeat attribute
+
+Here's the new HTML:
+
+    <div class="bin" droppable drop="handleDrop" ng-repeat="bin in [1, 2, 3]" bin="bin" id="bin{% raw %}{{ bin }}{% endraw %}">{% raw %}{{ bin }}{% endraw %}</div>
+    <div class="item" id="item{% raw %}{{ item }}{% endraw %}" ng-repeat="item in [1, 2, 3]" draggable item="item">{% raw %}{{ item }}{% endraw %}</div>
+{: .language-markup}
+
+This will create 3 items & 3 bins.
+
+### Droppable directive changes
+
+We need to update the scope object so that it includes the `bin` attribute we added to the mark up:
+
+    ...
+    scope: {
+      drop: '&',
+      bin: '=' // bi-directional scope
+    },
+    link: ...
+{: .language-javascript}
+
+This is what allows the ng-repeat item to stay in scope.
+
+We also need to change the code in the `drop` event to the following:
+
+    var binId = this.id;
+    var item = document.getElementById(e.dataTransfer.getData('Text'));
+    this.appendChild(item);
+    // call the passed drop function
+    scope.$apply(function(scope) {
+        var fn = scope.drop();
+        if ('undefined' !== typeof fn) {            
+          fn(item.id, binId);
+        }
+    });
+{: .;language-javascript}
+
+This is quite a change from just `$scope.apply('drop()');`, but really all we're doing is calling the function separately so that we can pass two parameters, the bin and item ids, to it.
+
+There's a pen for this solution [right here](http://cdpn.io/JtDro) & as you can see, when an item is dropped into the bin an alert will display saying which item was dropped where.
+
+This may not be the best way to do this, so if anyone's got a better way, please leave a comment!

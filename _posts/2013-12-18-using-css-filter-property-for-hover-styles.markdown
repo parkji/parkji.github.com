@@ -13,7 +13,7 @@ I was playing around with a site (still in development) the other day & I had to
 
 1. gentle gradient background
 2. slightly brighter on hover
-3.reverse gradient when active
+3. reverse gradient when active
 
 The SCSS looked like this:
 

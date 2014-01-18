@@ -25,21 +25,22 @@ The first of these images (what I like to call the 'short bottom border') is the
 
 Here's the CSS:
 
-    h1 {
-        font-size: 20px;
-        font-weight: bold;
-        padding-bottom: 10px;
-        position: relative;
-    }
-    h1:after {
-        content: " ";
-        border-bottom: 1px solid;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 40px;
-    }
-{: .language-css}
+{% prism css %}
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    position: relative;
+}
+h1:after {
+    content: " ";
+    border-bottom: 1px solid;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+}
+{% endprism %}
 
 This adds a border after the heading of width `40px`, i.e. a short border. Of course you can change the `width` to be any value you choose, making the border longer or shorter. You could also change the position so that the border appears on the right hand side, or above the heading.
 
@@ -51,24 +52,25 @@ To create the arrow styling of the second image, we'll use borders, as described
 
 Here's the CSS:
 
-    h1 {
-        background: #000000;
-        color: #FFFFFF;
-        font-size: 20px;
-        font-weight: bold;
-        padding: 5px;
-        position: relative;
-    }
-    h1:after {
-        border-color: #000000 transparent transparent;
-        border-style: solid;
-        border-width: 10px;
-        content: " ";
-        position: absolute;
-        bottom: -20px;
-        left: 10px;
-    }
-{: .language-css}
+{% prism css %}
+h1 {
+    background: #000000;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    position: relative;
+}
+h1:after {
+    border-color: #000000 transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    content: " ";
+    position: absolute;
+    bottom: -20px;
+    left: 10px;
+}
+{% endprism %}
 
 In this case the **:after** adds a empty element that has borders 10px in width, however, since the left, right &amp; bottom borders are transparent in colour, they do not appear. This means that not only do you get the effect of an arrow, *but* you can also place the other items immediately after the heading &amp; the borders will not obfuscate them.
 

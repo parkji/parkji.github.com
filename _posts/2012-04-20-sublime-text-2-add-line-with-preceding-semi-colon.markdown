@@ -15,30 +15,32 @@ It's basically two steps to add a new macro & a key binding for it.
 
 The first step is to choose **Preferences > Browse Packages**, this will open up a window with a list of package directories. Go to the **User** directory & create a new file inside, you can call the file whatever you like, but make sure that it has a **.sublime-macro** extension. Open the new file & add the following JSON into it, then save.
 
-    [
-        {
-            "command": "move_to",
-            "args": {"to": "hardeol"}
-        },
-        {
-            "command": "insert",
-            "args": {"characters": ";\n"}
-        }
-    ]
-{: .language-javascript}
+{% prism javascript %}
+[
+    {
+        "command": "move_to",
+        "args": {"to": "hardeol"}
+    },
+    {
+        "command": "insert",
+        "args": {"characters": ";\n"}
+    }
+]
+{% endprism %}
 
 Now the macro has been created, the second step is to add a User key binding to override the default Sublime one. To do this choose **Preferences > Key Bindings - User**. This will open up the Key binding JSON file. If you haven't added any bespoke key bindings, it will contain just an opening & closing bracket `[]`.
 
 Copy the key binding below into this file & save.
 
-    {
-        "keys": ["super+shift+enter"],
-        "command": "run_macro_file",
-        "args": {
-            "file": "Packages/User/filename.sublime-macro"
-        }
+{% prism javascript %}
+{
+    "keys": ["super+shift+enter"],
+    "command": "run_macro_file",
+    "args": {
+        "file": "Packages/User/filename.sublime-macro"
     }
-{: .language-javascript}
+}
+{% endprism %}
 
 Replace `filename` with the name that you gave the macro file & voila, now when you press Cmd+Shift+Enter a new line will be added & a semi-colon will be placed at the end of the previous line.
 

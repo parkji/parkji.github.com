@@ -22,14 +22,16 @@ You'll probably want to readup on native drag & drop if you're not familiar with
 
 First up we need to set up an AngularJS application & markup:
 
-    var app = angular.module('dragDrop', []);
-{: .language-javascript}
+{% prism javascript %}
+var app = angular.module('dragDrop', []);
+{% endprism %}
 
-    <body ng-app="dragDrop">
-        <div class="bin"></div>
-        <div class="item" id="item1"></div>
-    </body>
-{: .language-markup}
+{% prism markup %}
+<body ng-app="dragDrop">
+    <div class="bin"></div>
+    <div class="item" id="item1"></div>
+</body>
+{% endprism %}
 
 As you can see the markup is just an item & a bin, our aim is to be able to drop the item in the bin.
 
@@ -37,49 +39,52 @@ As you can see the markup is just an item & a bin, our aim is to be able to drop
 
 We'll now create an AngularJS directive that will make an item draggable.
 
-    app.directive('draggable', function() {
-        return function(scope, element) {
+{% prism javascript %}
+app.directive('draggable', function() {
+    return function(scope, element) {
 
-        }
-    });
-{: .language-javascript}
+    }
+});
+{% endprism %}
 
 This is the actual directive & because we're returning a function AngularJS will, by default, use a `restrict` value of "A", meaning our directive will be set using an attribute on an element, like so:
 
-    <div class="item" id="item1" draggable></div>
-{: .language-markup}
+{% prism markup %}
+<div class="item" id="item1" draggable></div>
+{% endprism %}
 
 We'll now add the code to the directive. This will mark the element as draggable & add the two event listeners for dragging items, `dragstart` & `dragend`.
 
-    app.directive('draggable', function() {
-        return function(scope, element) {
-            // this gives us the native JS object
-            var el = element[0];
+{% prism javascript %}
+app.directive('draggable', function() {
+    return function(scope, element) {
+        // this gives us the native JS object
+        var el = element[0];
 
-            el.draggable = true;
+        el.draggable = true;
 
-            el.addEventListener(
-                'dragstart',
-                function(e) {
-                    e.dataTransfer.effectAllowed = 'move';
-                    e.dataTransfer.setData('Text', this.id);
-                    this.classList.add('drag');
-                    return false;
-                },
-                false
-            );
+        el.addEventListener(
+            'dragstart',
+            function(e) {
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('Text', this.id);
+                this.classList.add('drag');
+                return false;
+            },
+            false
+        );
 
-            el.addEventListener(
-                'dragend',
-                function(e) {
-                    this.classList.remove('drag');
-                    return false;
-                },
-                false
-            );
-        }
-    });
-{: .language-javascript}
+        el.addEventListener(
+            'dragend',
+            function(e) {
+                this.classList.remove('drag');
+                return false;
+            },
+            false
+        );
+    }
+});
+{% endprism %}
 
 The two event listeners in this case simply add & remove a class called `drag` to the item (which can have any styling you'd like, e.g. `opacity: 0.5`) & set up the dataTransfer. Setting the `effectAllowed` dataTransfer property means that we're specifying the item being dragged is to be moved when it's dropped, this will be important later on. Putting the id of the element into the dataTransfer data will mean that we can get the element when a `drop` event occurs.
 
@@ -87,23 +92,25 @@ The two event listeners in this case simply add & remove a class called `drag` t
 
 Next we'll add the droppable directive so that we can specify elements that we can drop items in.
 
-    app.directive('droppable', function() {
-        return {
-            scope: {},
-            link: function(scope, element) {
-                // again we need the native object
-                var el = element[0];
-            }
+{% prism javascript %}
+app.directive('droppable', function() {
+    return {
+        scope: {},
+        link: function(scope, element) {
+            // again we need the native object
+            var el = element[0];
         }
-    });
-{: .language-javascript}
+    }
+});
+{% endprism %}
 
 This is slightly different to the draggable directive because we want to isolate the scope so we can't just return the `link` function. Our reason for wanting to isolate the scope is so that we can call a function in a controller later on.
 
 We'll also update our markup to make our bin droppable.
 
-    <div class="bin" droppable></div>
-{: .language-markup}
+{% prism markup %}
+<div class="bin" droppable></div>
+{% endprism %}
 
 We now need to add four events to the droppable element in our droppable directive `link` function:
 
@@ -114,62 +121,65 @@ We now need to add four events to the droppable element in our droppable directi
 
 Firstly, `dragover`:
 
-    el.addEventListener(
-        'dragover',
-        function(e) {
-            e.dataTransfer.dropEffect = 'move';
-            // allows us to drop
-            if (e.preventDefault) e.preventDefault();
-            this.classList.add('over');
-            return false;
-        },
-        false
-    );
-{: .language-javascript}
+{% prism javascript %}
+el.addEventListener(
+    'dragover',
+    function(e) {
+        e.dataTransfer.dropEffect = 'move';
+        // allows us to drop
+        if (e.preventDefault) e.preventDefault();
+        this.classList.add('over');
+        return false;
+    },
+    false
+);
+{% endprism %}
 
 As you can see we're setting the `dropEffect` property of dataTransfer to "move", the same as we set `effectAllowed` in the `dragstart` event. _If these values didn't match the browser wouldn't let us drop the item into the bin_. Adding an `over` class to the element on `dragover` will allow us to set a style that shows the user that the item can be dropped here.
 
 The next two events, `dragenter` & `dragleave` are small & simple:
 
-    el.addEventListener(
-        'dragenter',
-        function(e) {
-            this.classList.add('over');
-            return false;
-        },
-        false
-    );
+{% prism javascript %}
+el.addEventListener(
+    'dragenter',
+    function(e) {
+        this.classList.add('over');
+        return false;
+    },
+    false
+);
 
-    el.addEventListener(
-        'dragleave',
-        function(e) {
-            this.classList.remove('over');
-            return false;
-        },
-        false
-    );
-{: .language-javascript}
+el.addEventListener(
+    'dragleave',
+    function(e) {
+        this.classList.remove('over');
+        return false;
+    },
+    false
+);
+{% endprism %}
 
 These events mean that when our draggable item enters & leaves a droppable element the `over` class is added or removed.
 
 The final event is the most important one, `drop`.
 
-    el.addEventListener(
-        'drop',
-        function(e) {
-            // Stops some browsers from redirecting.
-            if (e.stopPropagation) e.stopPropagation();
+{% prism javascript %}
+el.addEventListener(
+    'drop',
+    function(e) {
+        // Stops some browsers from redirecting.
+        if (e.stopPropagation) e.stopPropagation();
 
-            this.classList.remove('over');
+        this.classList.remove('over');
 
-            var item = document.getElementById(e.dataTransfer.getData('Text'));
-            this.appendChild(item);
+        var item = document.getElementById(e.dataTransfer.getData('Text'));
+        this.appendChild(item);
 
-            return false;
-        },
-        false
-    );
-{: .language-javascript}
+        return false;
+    },
+    false
+);
+{% endprism %}
 
 This event will remove the `over` class & get the item element from the id that we put into the dataTransfer in the `dragstart` event & append it to the droppable element. This gives us the ability to drag our `.item` element & drop it into our `.bin` element. You can see this in action in this [pen](http://cdpn.io/tqlhv).
 
@@ -177,57 +187,60 @@ This event will remove the `over` class & get the item element from the id that 
 
 It's likely that once you've dropped an element you'll want to do something more, e.g. make a call to your REST API to update your database. We can do this by setting an attribute on our droppable element with a controller function that we want to call on drop.
 
-    <div class="bin" droppable drop="handleDrop()"></div>
-{: .language-markup}
+{% prism markup %}
+<div class="bin" droppable drop="handleDrop()"></div>
+{% endprism %}
 
 Then we'll add a controller to our markup & application.
 
-    
-    <body ng-app="dragDrop" ng-controller="DragDropCtrl">
-        <div class="bin" droppable drop="handleDrop()"></div>
-        <div class="item" id="item1" draggable></div>
-    </body>
-{: .language-markup}
+{% prism markup %}
+<body ng-app="dragDrop" ng-controller="DragDropCtrl">
+    <div class="bin" droppable drop="handleDrop()"></div>
+    <div class="item" id="item1" draggable></div>
+</body>
+{% endprism %}w
 
-    app.controller('DragDropCtrl', function($scope) {
-        $scope.handleDrop = function() {
-            alert('Item has been dropped');
-        }
-    });
-{: .language-javascript}
+{% prism javascript %}
+app.controller('DragDropCtrl', function($scope) {
+    $scope.handleDrop = function() {
+        alert('Item has been dropped');
+    }
+});
+{% endprism %}
 
 Now, in our droppable directive we'll need to isolate the scope of `drop` so that it's in the parent scope & also call the drop function.
 
-    app.directive('droppable', function() {
-        return {
-            scope: {
-                drop: '&' // parent
-            },
-            link: function(scope, element) {
-                ...
+{% prism javascript %}
+app.directive('droppable', function() {
+    return {
+        scope: {
+            drop: '&' // parent
+        },
+        link: function(scope, element) {
+            ...
 
-                el.addEventListener(
-                    'drop',
-                    function(e) {
-                        // Stops some browsers from redirecting.
-                        if (e.stopPropagation) e.stopPropagation();
+            el.addEventListener(
+                'drop',
+                function(e) {
+                    // Stops some browsers from redirecting.
+                    if (e.stopPropagation) e.stopPropagation();
 
-                        this.classList.remove('over');
+                    this.classList.remove('over');
 
-                        var item = document.getElementById(e.dataTransfer.getData('Text'));
-                        this.appendChild(item);
+                    var item = document.getElementById(e.dataTransfer.getData('Text'));
+                    this.appendChild(item);
 
-                        // call the drop passed drop function
-                        scope.$apply('drop()');
+                    // call the drop passed drop function
+                    scope.$apply('drop()');
 
-                        return false;
-                    },
-                    false
-                );
-            }
+                    return false;
+                },
+                false
+            );
         }
-    });
-{: .language-javascript}
+    }
+});
+{% endprism %}
 
 Note the use of `$apply()`, if we simply did `scope.drop()` an error would occur if no drop attribute was present, using `$apply()` prevents this.
 
@@ -252,9 +265,10 @@ The changes to the HTML are:
 
 Here's the new HTML:
 
-    <div class="bin" droppable drop="handleDrop" ng-repeat="bin in [1, 2, 3]" bin="bin" id="bin{% raw %}{{ bin }}{% endraw %}">{% raw %}{{ bin }}{% endraw %}</div>
-    <div class="item" id="item{% raw %}{{ item }}{% endraw %}" ng-repeat="item in [1, 2, 3]" draggable item="item">{% raw %}{{ item }}{% endraw %}</div>
-{: .language-markup}
+{% prism markup %}
+<div class="bin" droppable drop="handleDrop" ng-repeat="bin in [1, 2, 3]" bin="bin" id="bin{% raw %}{{ bin }}{% endraw %}">{% raw %}{{ bin }}{% endraw %}</div>
+<div class="item" id="item{% raw %}{{ item }}{% endraw %}" ng-repeat="item in [1, 2, 3]" draggable item="item">{% raw %}{{ item }}{% endraw %}</div>
+{% endprism %}
 
 This will create 3 items & 3 bins.
 
@@ -262,29 +276,31 @@ This will create 3 items & 3 bins.
 
 We need to update the scope object so that it includes the `bin` attribute we added to the mark up:
 
-    ...
-    scope: {
-      drop: '&',
-      bin: '=' // bi-directional scope
-    },
-    link: ...
-{: .language-javascript}
+{% prism javascript %}
+...
+scope: {
+  drop: '&',
+  bin: '=' // bi-directional scope
+},
+link: ...
+{% endprism %}
 
 This is what allows the ng-repeat item to stay in scope.
 
 We also need to change the code in the `drop` event to the following:
 
-    var binId = this.id;
-    var item = document.getElementById(e.dataTransfer.getData('Text'));
-    this.appendChild(item);
-    // call the passed drop function
-    scope.$apply(function(scope) {
-        var fn = scope.drop();
-        if ('undefined' !== typeof fn) {            
-          fn(item.id, binId);
-        }
-    });
-{: .;language-javascript}
+{% prism javascript %}
+var binId = this.id;
+var item = document.getElementById(e.dataTransfer.getData('Text'));
+this.appendChild(item);
+// call the passed drop function
+scope.$apply(function(scope) {
+    var fn = scope.drop();
+    if ('undefined' !== typeof fn) {
+      fn(item.id, binId);
+    }
+});
+{% endprism %}
 
 This is quite a change from just `$scope.apply('drop()');`, but really all we're doing is calling the function separately so that we can pass two parameters, the bin and item ids, to it.
 

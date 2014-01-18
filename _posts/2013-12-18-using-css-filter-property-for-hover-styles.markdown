@@ -17,52 +17,54 @@ I was playing around with a site (still in development) the other day & I had to
 
 The SCSS looked like this:
 
-    .btn {
-      border: 1px solid #007600;
-      color: #FFFFFF;
-      padding: 0.75em 1.5em;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-      outline: none;
-      
-      background: linear-gradient(#009000, #007600);
-      
-      &:hover {
-        background: linear-gradient(#00ac00, #008d00);
-      }
-      
-      &:active {
-         background: linear-gradient(#008d00, #00ac00);
-      }
-    }
-{: .language-scss}
+{% prism css %}
+.btn {
+  border: 1px solid #007600;
+  color: #FFFFFF;
+  padding: 0.75em 1.5em;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  outline: none;
+  
+  background: linear-gradient(#009000, #007600);
+  
+  &:hover {
+    background: linear-gradient(#00ac00, #008d00);
+  }
+  
+  &:active {
+     background: linear-gradient(#008d00, #00ac00);
+  }
+}
+{% endprism %}
 
 This gives: [http://cdpn.io/qeiHL](http://cdpn.io/qeiHL).
 
 As you can see, that's four colours. Whilst there's nothing wrong with this I started thinking about whether I could use `filter` to take care of the brightness for me, saving me a couple of colours. The answer was yes, I could, using the `brightness()` function as seen below:
 
-    .btn {
-      border: 1px solid #007600;
-      color: #FFFFFF;
-      padding: 0.75em 1.5em;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-      outline: none;
-      
-      background: linear-gradient(#009000, #007600);
-      
-      &:hover {
-        -webkit-filter: brightness(120%);
-        filter: brightness(120%);
-      }
-      
-      &:active {
-         background: linear-gradient(#007600, #009000);
-      }
-    }
-{: .language-scss}
+{% prism css %}
+.btn {
+  border: 1px solid #007600;
+  color: #FFFFFF;
+  padding: 0.75em 1.5em;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  outline: none;
+  
+  background: linear-gradient(#009000, #007600);
+  
+  &:hover {
+    -webkit-filter: brightness(120%);
+    filter: brightness(120%);
+  }
+  
+  &:active {
+     background: linear-gradient(#007600, #009000);
+  }
+}
+{% endprism %}
 
 This gives: [http://cdpn.io/bxunC](http://cdpn.io/bxunC).
 

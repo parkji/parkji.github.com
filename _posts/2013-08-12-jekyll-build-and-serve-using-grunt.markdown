@@ -13,59 +13,62 @@ This blog is built using [Jekyll](http://jekyllrb.com/) & I'm a huge fan of it f
 
 First things first I created a basic package.json file:
 
-    {
-        "name": "parkji.github.com",
-        "version": "0.1.0",
-        "description": "ParkJi Blog Website",
-        "author": "Ben Parker"
-    }
-{: .language-javascript }
+{% prism javascript %}
+{
+    "name": "parkji.github.com",
+    "version": "0.1.0",
+    "description": "ParkJi Blog Website",
+    "author": "Ben Parker"
+}
+{% endprism %}
 
 Then I ran the following commands to install grunt & the plugins I needed:
 
-    $ npm install grunt --save-dev
-    $ npm install grunt-contrib-watch --save-dev
-    $ npm install grunt-shell --save-dev
-{: .language-bash }
+{% prism javascript %}
+$ npm install grunt --save-dev
+$ npm install grunt-contrib-watch --save-dev
+$ npm install grunt-shell --save-dev
+{% endprism %}
 
 ## The Gruntfile
 
 The Gruntfile I came up with is fairly simple:
 
-    // Gruntfile.js
-    module.exports = function(grunt) {
-        grunt.initConfig({
-            pkg: grunt.file.readJSON('package.json'),
-            shell: {
-                jekyllBuild: {
-                    command: 'jekyll build'
-                },
-                jekyllServe: {
-                    command: 'jekyll serve'
-                }
+{% prism javascript %}
+// Gruntfile.js
+module.exports = function(grunt) {
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        shell: {
+            jekyllBuild: {
+                command: 'jekyll build'
             },
-            watch: {
-                files: [
-                    '_includes/*.html',
-                    '_layouts/*.html',
-                    '_posts/*.markdown',
-                    '_config.yml',
-                    'index.html'
-                ],
-                tasks: ['shell:jekyllBuild', 'shell:jekyllServe'],
-                options: {
-                    interrupt: true,
-                    atBegin: true
-                }
+            jekyllServe: {
+                command: 'jekyll serve'
             }
-        });
+        },
+        watch: {
+            files: [
+                '_includes/*.html',
+                '_layouts/*.html',
+                '_posts/*.markdown',
+                '_config.yml',
+                'index.html'
+            ],
+            tasks: ['shell:jekyllBuild', 'shell:jekyllServe'],
+            options: {
+                interrupt: true,
+                atBegin: true
+            }
+        }
+    });
 
-        grunt.loadNpmTasks('grunt-shell');
-        grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
-        grunt.registerTask('default', ['shell']);
-    };
-{: .language-javascript}
+    grunt.registerTask('default', ['shell']);
+};
+{% endprism %}
 
 As you can see there are two shell tasks, one for build, one for serve & a watch task that runs these when any of the listed files change. You can add more files to this list if you like, but this is all that was needed for this site.
 
@@ -73,8 +76,9 @@ The two options for the watch task are important. `atBegin` is fairly self-expla
 
 Now all you have to do is run
 
-    $ grunt watch
-{: .language-bash}
+{% prism javascript %}
+$ grunt watch
+{% endprism %}
 
 and everytime you save a file that appears in the watch list you Jekyll site will be built & served.
 
@@ -84,17 +88,19 @@ You can also introduce live reload into the mix because this is built into the g
 
 To set this up simply add the following to the watch `options` object:
 
-    options: {
-        interrupt: true,
-        atBegin: true,
-        livereload: true
-    }
-{: .language-javascript}
+{% prism javascript %}
+options: {
+    interrupt: true,
+    atBegin: true,
+    livereload: true
+}
+{% endprism %}
 
 and include the following script in your HTML
 
-    <script src="http://localhost:35729/livereload.js"></script>
-{: .language-markup}
+{% prism markup %}
+<script src="http://localhost:35729/livereload.js"></script>
+{% endprism %}
 
 Now when you save a file the watch command will build & serve your jekyll site _&_ reload the page in your browser for you.
 

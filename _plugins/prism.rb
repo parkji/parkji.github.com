@@ -1,6 +1,6 @@
 module Jekyll
 
-  class PrismBlock < Liquid::Block
+  class PrismBlockTag < Liquid::Block
     include Liquid::StandardFilters
 
     OPTIONS_SYNTAX = %r{^([a-zA-Z0-9.+#-]+)((\s+\w+(=[0-9,-]+)?)*)$}
@@ -44,4 +44,4 @@ module Jekyll
 
 end
 
-Liquid::Template.register_tag('prism', Jekyll::PrismBlock)
+Liquid::Template.register_tag('prism', Jekyll::PrismBlockTag)

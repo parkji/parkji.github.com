@@ -13,15 +13,15 @@ I was recently playing around creating a loading animation which lead to me figu
 
 First up here's the HTML I'll be using:
 
-{% prism markup %}
+``` html
 <span class="dot"></span>
 <span class="dot"></span>
 <span class="dot"></span>
-{% endprism %}
+```
 
 and the basic CSS to go with it:
 
-{% prism css %}
+``` css
 .dot {
     display: inline-block;
     background: #CCC;
@@ -33,15 +33,15 @@ and the basic CSS to go with it:
 .dot:first-child {
     background: black;
 }
-{% endprism %}
+```
 
 This produces:
 
-![Intials Dots](/images/posts/chaining-css3-animations/initial-dots.png){: .standout}
+<img src="/images/posts/chaining-css3-animations/initial-dots.png" alt="Intials Dots" class="standout">
 
 The next thing we need to do is create the animation that will highlight the dots:
 
-{% prism css %}
+``` css
 @keyframes flash {
     from  {
         background: black;
@@ -50,13 +50,13 @@ The next thing we need to do is create the animation that will highlight the dot
         background: #CCC;
     }
 }
-{% endprism %}
+```
 
 This is pretty basic & simply flashes the dot from black to grey.
 
 Now we'll get the dots to use this animation:
 
-{% prism css %}
+``` css
 .dot {
     ...
 
@@ -67,26 +67,26 @@ Now we'll get the dots to use this animation:
     /** or in short hand **/
     animation: flash 2000ms infinite;
 }
-{% endprism %}
+```
 
 This runs the `flash` animation on the dot element continuously (`infinite`) at a speed of 2 seconds. This produces the following:
 
-![Animated dots, all flashing](/images/posts/chaining-css3-animations/dots-all-flashing.png){: .standout}
+<img src="/images/posts/chaining-css3-animations/dots-all-flashing.png" alt="Animated dots, all flashing" class="standout">
 
 This isn't quite what we want because each dot is flashing at the same time. Enter `animation-delay`.
 
-{% prism css %}
+``` css
 .dot:nth-child(2) {
     animation-delay: 500ms;
 }
 .dot:nth-child(3) {
     animation-delay: 1000ms;
 }
-{% endprism %}
+```
 
 `animation-delay` stops the animation from running until the set time after the element is loaded. In our example the second dot will flash after 500ms & the third after 1000ms, this keeps the dots out of sequence & produces the effect we want:
 
-![Dots flashing in sequence](/images/posts/chaining-css3-animations/dots-flashing.png){: .standout}
+<img src="/images/posts/chaining-css3-animations/dots-flashing.png" alt="Dots flashing in sequence" class="standout">
 
 The trick here is to keep the animations from running at the same time. In this example the first dot will begin animating at:
 
@@ -110,13 +110,13 @@ This means that the never begin animating at the same time & will therefore appe
 
 To see this fully in action [see this pen](http://codepen.io/parkji/full/aesih).
 
-Since animations are also supported on pseudo-elements it's also possible to shrink the markup for this by using `:after` & `:before`, like so:
+Since animations are also supported on pseudo-elements it's also possible to shrink the html for this by using `:after` & `:before`, like so:
 
-{% prism markup %}
+``` html
 <div class="dots"></div>
-{% endprism %}
+```
 
-{% prism css %}
+``` css
 .dots {
     display: inline-block;
     background: black;
@@ -140,6 +140,6 @@ Since animations are also supported on pseudo-elements it's also possible to shr
     left: 32px;
     animation-delay: 1000ms;
 }
-{% endprism %}
+```
 
 Finally, because mutiple animations can be used on an element you can go a bit crazier with something [like this](http://cdpn.io/lspuk).

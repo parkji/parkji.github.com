@@ -9,8 +9,8 @@ abstract: A couple of examples of how the :after CSS pseudo element can be used 
 
 Recently I've seen a couple of examples of headings that have stylings normally achieved by using images or extra markup. For example, the following two headings would normally be coded using background images or span tags:
 
-![Heading with a short bottom border](/images/posts/pseudo-styling-headings/heading-underline.png){: .standout}
-![Heading with an arrow underneath](/images/posts/pseudo-styling-headings/heading-arrow.png){: .standout}
+<img src="/images/posts/pseudo-styling-headings/heading-underline.png" alt="Heading with a short bottom border" class="standout">
+<img src="/images/posts/pseudo-styling-headings/heading-arrow.png" alt="Heading with an arrow underneath" class="standout">
 
 A colleague asked me if I could think of a way to achieve the same styling without images or extra markup. After a short while thinking about it, the **:after** pseudo element leapt into my head.
 
@@ -25,7 +25,7 @@ The first of these images (what I like to call the 'short bottom border') is the
 
 Here's the CSS:
 
-{% prism css %}
+``` css
 h1 {
     font-size: 20px;
     font-weight: bold;
@@ -40,7 +40,7 @@ h1:after {
     left: 0;
     width: 40px;
 }
-{% endprism %}
+```
 
 This adds a border after the heading of width `40px`, i.e. a short border. Of course you can change the `width` to be any value you choose, making the border longer or shorter. You could also change the position so that the border appears on the right hand side, or above the heading.
 
@@ -52,7 +52,7 @@ To create the arrow styling of the second image, we'll use borders, as described
 
 Here's the CSS:
 
-{% prism css %}
+``` css
 h1 {
     background: #000000;
     color: #FFFFFF;
@@ -70,7 +70,7 @@ h1:after {
     bottom: -20px;
     left: 10px;
 }
-{% endprism %}
+```
 
 In this case the **:after** adds a empty element that has borders 10px in width, however, since the left, right &amp; bottom borders are transparent in colour, they do not appear. This means that not only do you get the effect of an arrow, *but* you can also place the other items immediately after the heading &amp; the borders will not obfuscate them.
 

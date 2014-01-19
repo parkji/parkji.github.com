@@ -15,7 +15,7 @@ Grunt & it's plugins are all installed via `npm` so you'll need to install [node
 
 The first step in using grunt & assemble to build static sites is to include a package.json file, so that `npm` will know what dependencies to install.
 
-{% prism javascript %}
+``` javascript
 // package.json
 {
   "dependencies": {
@@ -23,23 +23,23 @@ The first step in using grunt & assemble to build static sites is to include a p
     "assemble": "~0.4.0"
   }
 }
-{% endprism %}
+```
 
 Now install grunt & assemble using:
 
-{% prism javascript %}
+``` javascript
 npm install
-{% endprism %}
+```
 
 You'll also need the grunt CLI, which can be installed globally using:
 
-{% prism javascript %}
+``` javascript
 npm install -g grunt-cli
-{% endprism %}
+```
 
 Next up we need to create a basic `Gruntfile.js`.
 
-{% prism javascript %}
+``` javascript
 // Gruntfile.js
 module.exports = function(grunt) {
     // Project configuration.
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('assemble');
     grunt.registerTask('default', []);
 };
-{% endprism %}
+```
 
 This Gruntfile won't do much at the moment since it has no tasks to run, but you can run it all the same using `grunt` from the command line & you'll get a nice `Done, without errors` message.
 
@@ -59,7 +59,7 @@ By default assemble uses [handlebars](http://handlebarsjs.com) as it's templatin
 
 My directory structure of choice looks like this:
 
-{% prism javascript %}
+``` javascript
 staticSite/
     package.json
     Gruntfile.js
@@ -68,11 +68,11 @@ staticSite/
             default.hbs
         pages/
             index.hbs
-{% endprism %}
+```
 
 To keep things simple our `default.hbs` file only contains the following:
 
-{% prism markup %}
+``` html
 <!-- src/layouts/default.hbs -->
 <!DOCTYPE html>
 <html>
@@ -86,24 +86,24 @@ To keep things simple our `default.hbs` file only contains the following:
         <footer>Footer text here</footer>
     </body>
 </html>
-{% endprism %}
+```
 
 The `{% raw %}{{> body }}{% endraw %}` tag is important because that's what assemble will replace with the content from the page files.
 
 Our `index.hbs` file is even simpler:
 
-{% prism markup %}
+``` html
 <!-- src/pages/index.hbs -->
 <section>
     <p>This is the index page.</p>
 </section>
-{% endprism %}
+```
 
 ## Static file generation
 
 To pull this all together we need to update our Gruntfile to use assemble to generate the static HTML files.
 
-{% prism javascript %}
+``` javascript
 // Gruntfile.js
 module.exports = function(grunt) {
     // Project configuration.
@@ -124,16 +124,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('assemble');
     grunt.registerTask('default', ['assemble']);
 };
-{% endprism %}
+```
 
 A little explanation. In the `options` property we're telling assemble to use `default.hbs` as the layout file, we're also setting `flatten` to true. What this does is "flattens" the directory structure for the page files. For example, if we were to set flatten to false the structure of web would be:
 
-{% prism javascript %}
+``` javascript
 web/
     src/
         pages/
             index.html
-{% endprism %}
+```
 
 This is not what we want, we want each page to appear directly under web, so we set flatten to true.
 
@@ -147,16 +147,16 @@ You're probably not going to want each page to have the same title so we'll use 
 
 We'll update our `index.hbs` page by adding the following to the top:
 
-{% prism markup %}
+``` html
 <!-- src/pages/index.hbs -->
 ---
 title: Home
 ---
-{% endprism %}
+```
 
 We'll also create a new page, `about.hbs` with the following content:
 
-{% prism markup %}
+``` html
 <!-- src/pages/about.hbs -->
 ---
 title: About
@@ -164,14 +164,14 @@ title: About
 <section>
     <p>This is the about page.</p>
 </section>
-{% endprism %}
+```
 
 Finally we need to update our `default.hbs` layout file & change the `<title>` tag:
 
-{% prism markup %}
+``` html
 <!-- src/layouts/default.hbs -->
 <title>{% raw %}{{ title }}{% endraw %}</title>
-{% endprism %}
+```
 
 Now run `grunt` to regenerate the files & you'll see that each page has a different title.
 
@@ -179,30 +179,30 @@ Now run `grunt` to regenerate the files & you'll see that each page has a differ
 
 It's also possible that you'll want to delete a page, but just deleting the .hbs file isn't enough because assemble won't then delete the HTML file when you run grunt. To perform some cleanup we'll use the `grunt-contrib-clean` plugin. Install it like so:
 
-{% prism javascript %}
+``` javascript
 npm install grunt-contrib-clean --save
-{% endprism %}
+```
 
 Then add the following task to your Gruntfile:
 
-{% prism javascript %}
+``` javascript
 // Gruntfile.js
 clean: {
     all: ['web/*.html']
 }
-{% endprism %}
+```
 
 Finally update the grunt file to include the plugin & prepend it to the list of tasks:
 
-{% prism javascript %}
+``` javascript
 // Gruntfile.js
 grunt.loadNpmTasks('grunt-contrib-clean');
 grunt.registerTask('default', ['clean', 'assemble']);
-{% endprism %}
+```
 
 It needs to be prepended so that it clears the files before assemble generates them. Running grunt should now give you similar output to this:
 
-{% prism javascript %}
+``` javascript
 Running "clean:all" (clean) task
 Cleaning "web/about.html"...OK
 Cleaning "web/index.html"...OK
@@ -219,7 +219,7 @@ File "index.html" assembled...OK
 >> Assembled 2 pages.
 
 Done, without errors.
-{% endprism %}
+```
 
 
 That's all there is to building a simple static website using grunt & assemble. Be sure to checkout both grunt & assemble though because there is way more to them than mere static site generation.

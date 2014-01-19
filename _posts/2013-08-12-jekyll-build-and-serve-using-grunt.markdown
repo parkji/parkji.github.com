@@ -13,28 +13,28 @@ This blog is built using [Jekyll](http://jekyllrb.com/) & I'm a huge fan of it f
 
 First things first I created a basic package.json file:
 
-{% prism javascript %}
+``` javascript
 {
     "name": "parkji.github.com",
     "version": "0.1.0",
     "description": "ParkJi Blog Website",
     "author": "Ben Parker"
 }
-{% endprism %}
+```
 
 Then I ran the following commands to install grunt & the plugins I needed:
 
-{% prism javascript %}
+``` javascript
 $ npm install grunt --save-dev
 $ npm install grunt-contrib-watch --save-dev
 $ npm install grunt-shell --save-dev
-{% endprism %}
+```
 
 ## The Gruntfile
 
 The Gruntfile I came up with is fairly simple:
 
-{% prism javascript %}
+``` javascript
 // Gruntfile.js
 module.exports = function(grunt) {
     grunt.initConfig({
@@ -68,7 +68,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['shell']);
 };
-{% endprism %}
+```
 
 As you can see there are two shell tasks, one for build, one for serve & a watch task that runs these when any of the listed files change. You can add more files to this list if you like, but this is all that was needed for this site.
 
@@ -76,9 +76,9 @@ The two options for the watch task are important. `atBegin` is fairly self-expla
 
 Now all you have to do is run
 
-{% prism javascript %}
+``` javascript
 $ grunt watch
-{% endprism %}
+```
 
 and everytime you save a file that appears in the watch list you Jekyll site will be built & served.
 
@@ -88,19 +88,19 @@ You can also introduce live reload into the mix because this is built into the g
 
 To set this up simply add the following to the watch `options` object:
 
-{% prism javascript %}
+``` javascript
 options: {
     interrupt: true,
     atBegin: true,
     livereload: true
 }
-{% endprism %}
+```
 
 and include the following script in your HTML
 
-{% prism markup %}
+``` html
 <script src="http://localhost:35729/livereload.js"></script>
-{% endprism %}
+```
 
 Now when you save a file the watch command will build & serve your jekyll site _&_ reload the page in your browser for you.
 

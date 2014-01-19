@@ -17,7 +17,7 @@ I was playing around with a site (still in development) the other day & I had to
 
 The SCSS looked like this:
 
-{% prism css %}
+``` css
 .btn {
   border: 1px solid #007600;
   color: #FFFFFF;
@@ -37,13 +37,13 @@ The SCSS looked like this:
      background: linear-gradient(#008d00, #00ac00);
   }
 }
-{% endprism %}
+```
 
 This gives: [http://cdpn.io/qeiHL](http://cdpn.io/qeiHL).
 
 As you can see, that's four colours. Whilst there's nothing wrong with this I started thinking about whether I could use `filter` to take care of the brightness for me, saving me a couple of colours. The answer was yes, I could, using the `brightness()` function as seen below:
 
-{% prism css %}
+``` css
 .btn {
   border: 1px solid #007600;
   color: #FFFFFF;
@@ -64,7 +64,7 @@ As you can see, that's four colours. Whilst there's nothing wrong with this I st
      background: linear-gradient(#007600, #009000);
   }
 }
-{% endprism %}
+```
 
 This gives: [http://cdpn.io/bxunC](http://cdpn.io/bxunC).
 

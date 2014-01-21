@@ -162,3 +162,7 @@ npm test
 ```
 
 Also, the `generator-generator` will create a travis config file for you, which means that you can hook your repo up to it <abbr title="and">&amp;</abbr> have continuous integration.
+
+## Repository
+
+My generator can be found on github - [https://github.com/parkji/generator-parkji-vanilla](https://github.com/parkji/generator-parkji-vanilla).

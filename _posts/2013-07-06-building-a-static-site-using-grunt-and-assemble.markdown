@@ -15,8 +15,9 @@ Grunt & it's plugins are all installed via `npm` so you'll need to install [node
 
 The first step in using grunt & assemble to build static sites is to include a package.json file, so that `npm` will know what dependencies to install.
 
+`package.json`
+
 ``` javascript
-// package.json
 {
   "dependencies": {
     "grunt": "~0.4.1",
@@ -39,8 +40,9 @@ npm install -g grunt-cli
 
 Next up we need to create a basic `Gruntfile.js`.
 
+`Gruntfile.js`
+
 ``` javascript
-// Gruntfile.js
 module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
@@ -72,8 +74,9 @@ staticSite/
 
 To keep things simple our `default.hbs` file only contains the following:
 
+`src/layouts/default.hbs`
+
 ``` html
-<!-- src/layouts/default.hbs -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -92,8 +95,9 @@ The `{% raw %}{{> body }}{% endraw %}` tag is important because that's what asse
 
 Our `index.hbs` file is even simpler:
 
+`src/pages/index.hbs`
+
 ``` html
-<!-- src/pages/index.hbs -->
 <section>
     <p>This is the index page.</p>
 </section>
@@ -103,8 +107,9 @@ Our `index.hbs` file is even simpler:
 
 To pull this all together we need to update our Gruntfile to use assemble to generate the static HTML files.
 
+`Gruntfile.js`
+
 ``` javascript
-// Gruntfile.js
 module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
@@ -147,8 +152,9 @@ You're probably not going to want each page to have the same title so we'll use 
 
 We'll update our `index.hbs` page by adding the following to the top:
 
+`src/pages/index.hbs`
+
 ``` html
-<!-- src/pages/index.hbs -->
 ---
 title: Home
 ---
@@ -156,8 +162,9 @@ title: Home
 
 We'll also create a new page, `about.hbs` with the following content:
 
+`src/pages/about.hbs`
+
 ``` html
-<!-- src/pages/about.hbs -->
 ---
 title: About
 ---
@@ -168,8 +175,9 @@ title: About
 
 Finally we need to update our `default.hbs` layout file & change the `<title>` tag:
 
+`src/layouts/default.hbs`
+
 ``` html
-<!-- src/layouts/default.hbs -->
 <title>{% raw %}{{ title }}{% endraw %}</title>
 ```
 
@@ -185,8 +193,9 @@ npm install grunt-contrib-clean --save
 
 Then add the following task to your Gruntfile:
 
+`Gruntfile.js`
+
 ``` javascript
-// Gruntfile.js
 clean: {
     all: ['web/*.html']
 }
@@ -194,8 +203,9 @@ clean: {
 
 Finally update the grunt file to include the plugin & prepend it to the list of tasks:
 
+`Gruntfile.js`
+
 ``` javascript
-// Gruntfile.js
 grunt.loadNpmTasks('grunt-contrib-clean');
 grunt.registerTask('default', ['clean', 'assemble']);
 ```

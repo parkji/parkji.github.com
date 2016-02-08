@@ -37,4 +37,4 @@ The only thing I really miss is having a visualisation of the directory structur
 
 ## Conclusion
 
-Overall in the few weeks that I've been using VIM, I've really enjoyed it & am wondering why I didn't switch sooner. It's nice not to have to grab the mouse to highlight & remove/change code & I feel that I'm slowly becomning more productive using it. I'd definitely recommend giving it a go. If anyone's got any tips please, please feel free to email me or leave a comment, I'm definitely looking for ways to become even more productive with VIM!
+Overall in the few weeks that I've been using VIM, I've really enjoyed it & am wondering why I didn't switch sooner. It's nice not to have to grab the mouse to highlight & remove/change code & I feel that I'm slowly becoming more productive using it. I'd definitely recommend giving it a go. If anyone's got any tips please, please feel free to email me or leave a comment, I'm definitely looking for ways to become even more productive with VIM!

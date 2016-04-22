@@ -18,6 +18,8 @@ module.exports = function(grunt) {
                 '_includes/*.html',
                 '_layouts/*.html',
                 '_posts/*.markdown',
+                '_posts/*.md',
+                'css/*.css',
                 '_config.yml',
                 'index.html'
             ],

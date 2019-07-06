@@ -1,7 +1,7 @@
                 <section class="grid--item one-quarter mobile-one-whole">
                     <h2>About ParkJi</h2>
                     <p><img class="standout" src="/images/me.jpg" alt="Me!" /></p>
-                    <p>My name is Ben Parker, I'm a 27 year old front end web developer with a passion for web design, standards &amp; new &amp; innovative technologies.</p>
+                    <p>My name is Ben Parker, I'm a 31 year old front end web developer with a passion for web design, standards &amp; new &amp; innovative technologies.</p>
                 </section>
             </div><!-- end .grid -->
         </div><!-- End .wrapper -->
@@ -13,10 +13,8 @@
                 Powered by <a href="http://pages.github.com" title="Github Pages">github:pages</a> &amp; <a href="https://github.com/mojombo/jekyll/wiki" title="Jekyll">Jekyll</a>
             </p>
         </footer>
-        {% if site.env != 'development' %}
-            <script src="https://assets.parkji.co.uk/js/prism.min.js"></script>
-        {% else %}
-            <script src="http://parkjiAssets.localhost/js/prism.min.js"></script>
+        <script src="/js/prism.min.js"></script>
+        {% if site.env == 'development' %}
             <script src="http://localhost:35729/livereload.js"></script>
         {% endif %}
     </body>

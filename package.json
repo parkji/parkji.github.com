@@ -4,7 +4,7 @@
   "description": "ParkJi Blog Website",
   "author": "Ben Parker",
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "grunt": "~1.5.3",
     "grunt-contrib-watch": "~0.5.1",
     "grunt-shell": "~0.3.1"
   },

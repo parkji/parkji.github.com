@@ -5,7 +5,7 @@
   "author": "Ben Parker",
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-contrib-watch": "~0.5.1",
+    "grunt-contrib-watch": "~1.1.0",
     "grunt-shell": "~0.3.1"
   },
   "dependencies": {
